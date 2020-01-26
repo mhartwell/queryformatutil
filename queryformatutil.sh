@@ -1,4 +1,4 @@
-#!bin/bash -xe
+#!bin/bash
 
 #Author: Mike Hartwell
 #this is a quick and dirty script to take input from a hardcoded directory and formats it into a sql friendly format ideal for pasting into the predicate for IN statements
@@ -49,7 +49,6 @@ do
 	#NEWLINE+="${TEMPLINE}"
 done < "$INPUT_FILE"
 
-#echo "This is the output: ${NEWLINE}"
 #remove the last comma and a sh*tload of eschape chars on the last line
 FINAL_OUTPUT=${NEWLINE%????????}
 if [ $? -ne 0 ]; then
@@ -57,9 +56,9 @@ if [ $? -ne 0 ]; then
 	exit 1
 else
 	echo "Formatting text .... ";
-	#echo "FINAL OUTPUT: ${FINAL_OUTPUT}"
 fi
-#return to the clipboard
+
+#write to the output file
 echo -e "$FINAL_OUTPUT" >> "${OUTPUT_FILE}"
 if [ $? -ne 0 ]
 	then
